@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 import api from '../services/api';
@@ -6,6 +6,7 @@ import ls from '../services/local-storage';
 
 import ListCharacter from './ListCharacter';
 import CharacterDetail from './CharacterDetail';
+import CharacterNotFound from './CharacterNotFound';
 import Filters from './Filters';
 
 import '../stylesheets/App.css';
@@ -23,7 +24,7 @@ function App() {
         setCharacter(usersData);
       });
     }
-  }, []);
+  }, [character]);
 
   useEffect(() => {
     ls.set('character', character);
@@ -43,7 +44,7 @@ function App() {
     );
 
     if (characterFound) {
-      return <CharacterDetail characterDetail={characterFound} />;
+      return <CharacterDetail user={characterFound} />;
     } else {
       return <p>No se ha encontrado ningún personaje</p>;
     }
@@ -67,6 +68,14 @@ function App() {
         return user.species === filterSpecies;
       }
     });
+
+  const handleReset = () => {
+    setFilterName('');
+  };
+
+  if (filteredCharacter.length === 0) {
+    return <CharacterNotFound onClick={handleReset} />;
+  }
 
   return (
     <>
