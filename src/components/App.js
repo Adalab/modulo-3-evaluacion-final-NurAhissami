@@ -6,7 +6,6 @@ import ls from '../services/local-storage';
 
 import ListCharacter from './ListCharacter';
 import CharacterDetail from './CharacterDetail';
-import CharacterNotFound from './CharacterNotFound';
 import Filters from './Filters';
 
 import '../stylesheets/App.css';
@@ -19,12 +18,13 @@ function App() {
   );
 
   useEffect(() => {
-    if (character.length === 0) {
-      api().then((usersData) => {
-        setCharacter(usersData);
-      });
-    }
-  }, [character]);
+    api().then((data) => {
+      const orderedData = data.sort((a, b) =>
+        a.name > b.name ? 1 : a.name < b.name ? -1 : 0
+      );
+      return setCharacter(orderedData);
+    });
+  }, []);
 
   useEffect(() => {
     ls.set('character', character);
@@ -73,10 +73,6 @@ function App() {
     setFilterName('');
   };
 
-  if (filteredCharacter.length === 0) {
-    return <CharacterNotFound onClick={handleReset} />;
-  }
-
   return (
     <>
       {
@@ -87,7 +83,12 @@ function App() {
               filterSpecies={filterSpecies}
               handleFilter={handleFilter}
             />
-            <ListCharacter character={filteredCharacter} />;
+            <ListCharacter
+              character={filteredCharacter}
+              OnClick={handleReset}
+              filterName={filterName}
+            />
+            ;
           </Route>
 
           <Route path="/character/:ChaId" render={renderCharacterDetail} />
