@@ -13,7 +13,7 @@ const Character = (props) => {
         />
         <h4 className="card__title">{props.data.name}</h4>
         <p>{props.data.species}</p>
-        <p>{props.data.status}</p>
+        {/* <p>{props.data.status}</p> */}
       </article>
     </Link>
   );
