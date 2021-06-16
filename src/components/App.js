@@ -7,6 +7,7 @@ import ls from '../services/local-storage';
 import ListCharacter from './ListCharacter';
 import CharacterDetail from './CharacterDetail';
 import Filters from './Filters';
+import Header from './Header';
 
 import '../stylesheets/App.scss';
 
@@ -50,6 +51,11 @@ function App() {
     }
   };
 
+  const handleReset = () => {
+    setFilterName('');
+    setFilterSpecies('');
+  };
+
   const handleFilter = (data) => {
     if (data.key === 'name') {
       setFilterName(data.value);
@@ -69,12 +75,9 @@ function App() {
       }
     });
 
-  const handleReset = () => {
-    setFilterName('');
-  };
-
   return (
     <>
+      <Header />
       {
         <Switch>
           <Route exact path="/">
@@ -82,6 +85,7 @@ function App() {
               filterName={filterName}
               filterSpecies={filterSpecies}
               handleFilter={handleFilter}
+              handleReset={handleReset}
             />
             <ListCharacter
               character={filteredCharacter}

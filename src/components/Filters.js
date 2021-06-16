@@ -1,5 +1,7 @@
 import FilterByName from './FilterByName';
 import FilterBySpecies from './FilterBySpecies';
+import Reset from './Reset';
+
 import PropTypes from 'prop-types';
 
 function Filters(props) {
@@ -8,7 +10,7 @@ function Filters(props) {
   };
   return (
     <section>
-      <form onSubmit={handleForm}>
+      <form onSubmit={handleForm} className="form">
         <FilterByName
           filterName={props.filterName}
           handleFilter={props.handleFilter}
@@ -17,6 +19,7 @@ function Filters(props) {
           filterSpecies={props.filterSpecies}
           handleFilter={props.handleFilter}
         />
+        <Reset handleReset={props.handleReset} />
       </form>
     </section>
   );

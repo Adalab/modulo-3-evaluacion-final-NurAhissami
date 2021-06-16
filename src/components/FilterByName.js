@@ -12,11 +12,13 @@ const FilterByName = (props) => {
     <>
       <label htmlFor="name"></label>
       <input
+        className="form__inputText"
         type="text"
         name="name"
         id="name"
         value={props.filterName}
         onChange={handleChange}
+        placeholder="Busca tu personaje"
       />
     </>
   );
