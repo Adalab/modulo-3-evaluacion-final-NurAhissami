@@ -1,5 +1,6 @@
 import FilterByName from './FilterByName';
 import FilterBySpecies from './FilterBySpecies';
+import PropTypes from 'prop-types';
 
 function Filters(props) {
   const handleForm = (ev) => {
@@ -21,3 +22,9 @@ function Filters(props) {
   );
 }
 export default Filters;
+
+Filters.propTypes = {
+  handleFilter: PropTypes.func,
+  filterName: PropTypes.array,
+  filterSpecies: PropTypes.array,
+};

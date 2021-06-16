@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function CharacterNotFound(props) {
   return (
@@ -8,3 +8,7 @@ function CharacterNotFound(props) {
   );
 }
 export default CharacterNotFound;
+
+CharacterNotFound.propTypes = {
+  character: PropTypes.array,
+};

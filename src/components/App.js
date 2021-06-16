@@ -8,7 +8,7 @@ import ListCharacter from './ListCharacter';
 import CharacterDetail from './CharacterDetail';
 import Filters from './Filters';
 
-import '../stylesheets/App.css';
+import '../stylesheets/App.scss';
 
 function App() {
   const [character, setCharacter] = useState(ls.get('character', []));
@@ -19,10 +19,10 @@ function App() {
 
   useEffect(() => {
     api().then((data) => {
-      const orderedData = data.sort((a, b) =>
+      const ordered = data.sort((a, b) =>
         a.name > b.name ? 1 : a.name < b.name ? -1 : 0
       );
-      return setCharacter(orderedData);
+      return setCharacter(ordered);
     });
   }, []);
 

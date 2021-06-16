@@ -1,24 +1,27 @@
-import Character from './Character';
+import CharacterCard from './CharacterCard';
 import CharacterNotFound from './CharacterNotFound';
+import PropTypes from 'prop-types';
 
 function ListCharacter(props) {
   if (props.character.length === 0) {
-    return (
-      <CharacterNotFound onClick={props.onClick} character={props.filterName} />
-    );
+    return <CharacterNotFound character={props.filterName} />;
   }
 
   const characterElements = props.character.map((element) => {
     return (
-      <li key={element.id}>
-        <Character data={element} />
+      <li className="listCharacter__list" key={element.id}>
+        <CharacterCard data={element} />
       </li>
     );
   });
   return (
     <>
-      <ul>{characterElements}</ul>
+      <ul className="listCharacter">{characterElements}</ul>
     </>
   );
 }
 export default ListCharacter;
+
+ListCharacter.propsTypes = {
+  character: PropTypes.array,
+};

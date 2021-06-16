@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FilterBySpecies = (props) => {
   const handleChange = (ev) => {
@@ -26,3 +27,8 @@ const FilterBySpecies = (props) => {
 };
 
 export default FilterBySpecies;
+
+FilterBySpecies.propTypes = {
+  handleFilter: PropTypes.func,
+  filterSpecies: PropTypes.array,
+};
