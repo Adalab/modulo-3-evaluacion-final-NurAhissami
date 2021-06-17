@@ -8,6 +8,8 @@ import ListCharacter from './ListCharacter';
 import CharacterDetail from './CharacterDetail';
 import Filters from './Filters';
 import Header from './Header';
+import PageNotFound from './PageNotFound';
+import IdnotFound from './IdnotFound';
 
 import '../stylesheets/App.scss';
 
@@ -47,7 +49,7 @@ function App() {
     if (characterFound) {
       return <CharacterDetail user={characterFound} />;
     } else {
-      return <p>No se ha encontrado ningún personaje</p>;
+      return <IdnotFound />;
     }
   };
 
@@ -92,10 +94,12 @@ function App() {
               OnClick={handleReset}
               filterName={filterName}
             />
-            ;
           </Route>
 
           <Route path="/character/:ChaId" render={renderCharacterDetail} />
+          <Route>
+            <PageNotFound />
+          </Route>
         </Switch>
       }
     </>

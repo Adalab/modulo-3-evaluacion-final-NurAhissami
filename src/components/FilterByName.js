@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const FilterByName = (props) => {
   const handleChange = (ev) => {
@@ -25,8 +24,3 @@ const FilterByName = (props) => {
 };
 
 export default FilterByName;
-
-FilterByName.propTypes = {
-  handleFilter: PropTypes.func,
-  filterName: PropTypes.array,
-};

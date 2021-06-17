@@ -14,11 +14,15 @@ const CharacterCard = (props) => {
           alt={`Foto de ${props.data.name}`}
           title={`Foto de ${props.data.name}`}
         />
-        <h4>{props.data.name}</h4>
-        <p>{props.data.species}</p>
-        <div>
-          <span>{iconStatus(props.data.status)}</span>
-          <span>{iconSpecies(props.data.species)}</span>
+        <div className="listCharacter__container">
+          <h4 className="listCharacter__name">{props.data.name}</h4>
+          <p className="listCharacter__species">{props.data.species}</p>
+          <div className="listCharacter__icon">
+            <span>{iconStatus(props.data.status)}</span>
+            <span className="listCharacter__icon--species">
+              {iconSpecies(props.data.species)}
+            </span>
+          </div>
         </div>
       </article>
     </Link>

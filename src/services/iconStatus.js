@@ -1,7 +1,10 @@
-const iconAlive = <i className="fas fa-heartbeat"></i>;
-const iconDead = <i className="fas fa-dizzy"></i>;
-const iconUnknown = <i className="fas fa-question-circle"></i>;
-
+const iconAlive = <i className="listCharacter__icon fas fa-heartbeat"></i>;
+const iconDead = (
+  <i className="listCharacter__icon fas fa-skull-crossbones"></i>
+);
+const iconUnknown = (
+  <i className="listCharacter__icon fas fa-question-circle"></i>
+);
 const iconStatus = (status) => {
   if (status.toLowerCase() === 'alive') {
     return iconAlive;

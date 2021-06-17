@@ -1,6 +1,7 @@
 .form{
-    display: flex;    flex-direction: column;
-    align-items: center;
+    display: flex;    
+    flex-direction: column;
+    align-items: center; 
 
     &__inputText{
         border: solid 1px $colorInputText;
@@ -9,9 +10,11 @@
         padding-left:15px ;
         color: white;
         border-radius: 5px;
+        background-color: transparent;
     }
     &__inputSpecies{
-    
+        background-color: transparent;
+
         margin-top: 20px;
         margin-bottom: 20px;
         border: solid 1px $colorInputText;
@@ -43,6 +46,7 @@
                 padding-left:15px ;
                 color: white;
                 border-radius: 5px;
+
             }
             &__inputSpecies{
                 border: solid 1px $colorInputText;
