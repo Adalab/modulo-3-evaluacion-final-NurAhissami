@@ -7,13 +7,14 @@ function ListCharacter(props) {
     return <CharacterNotFound character={props.filterName} />;
   }
 
-  const characterElements = props.character.map((element) => {
+  const characterElements = props.character.map((element, id) => {
     return (
-      <li className="listCharacter__list" key={element.id}>
+      <li className="listCharacter__list" key={id}>
         <CharacterCard data={element} />
       </li>
     );
   });
+
   return (
     <>
       <ul className="listCharacter">{characterElements}</ul>

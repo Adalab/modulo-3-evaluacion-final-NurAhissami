@@ -17,6 +17,7 @@ const CharacterCard = (props) => {
         <div className="listCharacter__container">
           <h4 className="listCharacter__name">{props.data.name}</h4>
           <p className="listCharacter__species">{props.data.species}</p>
+          <p className="listCharacter__species">{props.data.type}</p>
           <div className="listCharacter__icon">
             <span>{iconStatus(props.data.status)}</span>
             <span className="listCharacter__icon--species">

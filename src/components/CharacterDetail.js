@@ -6,7 +6,6 @@ import iconStatus from '../services/iconStatus';
 import iconSpecies from '../services/iconSpecies';
 
 const CharacterDetail = (props) => {
-  console.log(props.user);
   return (
     <div className="detail">
       <Link to="/">

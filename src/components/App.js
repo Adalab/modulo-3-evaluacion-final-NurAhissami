@@ -19,6 +19,9 @@ function App() {
   const [filterSpecies, setFilterSpecies] = useState(
     ls.get('filterSpecies', '')
   );
+  const [filterType, setFilterType] = useState(ls.get('filterType', ''));
+
+  // const [favorites, setFavorites] = useState(ls.get('favorites', ''));
 
   useEffect(() => {
     api().then((data) => {
@@ -37,8 +40,10 @@ function App() {
     ls.set('character', character);
     ls.set('filterName', filterName);
     ls.set('filterSpecies', filterSpecies);
+    ls.set('filterType', filterType);
   }, [character, filterName, filterSpecies]);
 
+  //Ruta dinámica
   const renderCharacterDetail = (routerProps) => {
     const routerChaId = routerProps.match.params.ChaId;
 
@@ -53,16 +58,21 @@ function App() {
     }
   };
 
+  //Botón reset
   const handleReset = () => {
     setFilterName('');
     setFilterSpecies('');
+    setFilterType('');
   };
 
+  //Filtro
   const handleFilter = (data) => {
     if (data.key === 'name') {
       setFilterName(data.value);
     } else if (data.key === 'species') {
       setFilterSpecies(data.value);
+    } else if (data.key === 'type') {
+      setFilterType(data.value);
     }
   };
   const filteredCharacter = character
@@ -75,8 +85,27 @@ function App() {
       } else {
         return user.species === filterSpecies;
       }
+    })
+    .filter((user) => {
+      return user.type.toLowerCase().includes(filterType.toLowerCase());
     });
 
+  //Favoritos
+  // const favoritesCard = (clicked) => {
+  //   const cardFavorite = favorites.find((element) => {
+  //     return element.id === clicked;
+  //   });
+
+  //   if (cardFavorite === undefined) {
+  //     const characterFav = character.find((element) => {
+  //       return element.id === clicked;
+  //     });
+  //     setFavorites([...favorites, characterFav]);
+  //     return;
+  //   }
+  //   const newFavoriters = favorites.filter((element) => element.id !== clicked);
+  //   setFavorites(newFavoriters);
+  // };
   return (
     <>
       <Header />
@@ -85,6 +114,7 @@ function App() {
           <Route exact path="/">
             <Filters
               filterName={filterName}
+              filterType={filterType}
               filterSpecies={filterSpecies}
               handleFilter={handleFilter}
               handleReset={handleReset}
@@ -93,6 +123,8 @@ function App() {
               character={filteredCharacter}
               OnClick={handleReset}
               filterName={filterName}
+              // favorites={favorites}
+              // favoritesCard={favoritesCard}
             />
           </Route>
 

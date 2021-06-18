@@ -11,6 +11,7 @@ const getApiData = () => {
           status: user.status,
           origin: user.origin.name,
           episode: user.episode.length,
+          type: user.type,
         };
       });
       return cleanData;

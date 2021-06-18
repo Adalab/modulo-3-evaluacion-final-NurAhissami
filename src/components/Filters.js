@@ -1,5 +1,6 @@
 import FilterByName from './FilterByName';
 import FilterBySpecies from './FilterBySpecies';
+import FilterByType from './FilterByType';
 import Reset from './Reset';
 
 function Filters(props) {
@@ -15,6 +16,10 @@ function Filters(props) {
         />
         <FilterBySpecies
           filterSpecies={props.filterSpecies}
+          handleFilter={props.handleFilter}
+        />
+        <FilterByType
+          filterType={props.filterType}
           handleFilter={props.handleFilter}
         />
         <Reset handleReset={props.handleReset} />
